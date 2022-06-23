@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{user.fName + ' ' + user.lName}}</mat-card-title>
+    <mat-card-subtitle>{{user.department}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button (click)="onEdit.emit('edit')" mat-button color="accent">
+      <mat-icon>edit</mat-icon> Edit
+    </button>
+    <button (click)="onEdit.emit('delete')" mat-button color="warn">
+      <mat-icon>delete</mat-icon> Delete
+    </button>
+  </mat-card-actions>
+</mat-card>

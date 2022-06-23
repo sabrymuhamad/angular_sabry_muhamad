@@ -1,0 +1,13 @@
+<header>
+  <div class="sitename">User Management System</div>
+  <ul class="main-menu">
+    <li><a mat-button routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a mat-button routerLink="/users/list" routerLinkActive="active">Users</a></li>
+  </ul>
+  <ul class="user-menu">
+    <li><span>Welcome</span> {{loggedInUser.email}}</li>
+    <li><a (click)="loginService.logOut()" mat-button color="warn">
+        <mat-icon>power_settings_new</mat-icon> Logout
+      </a></li>
+  </ul>
+</header>

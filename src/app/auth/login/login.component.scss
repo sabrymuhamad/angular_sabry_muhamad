@@ -1,0 +1,11 @@
+.login-form {
+  width: 30%;
+  margin: 10% auto 0;
+  text-align: center;
+}
+
+@media(max-width:800px) {
+  .login-form {
+    width: 100%;
+  }
+}

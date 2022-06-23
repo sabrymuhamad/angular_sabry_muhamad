@@ -1,0 +1,10 @@
+.users-cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  li {
+    min-width: 285px;
+    flex: 1;
+  }
+}

@@ -1,0 +1,4 @@
+{
+    "angular.forceStrictTemplates": true,
+    "angular.disableAutomaticNgcc": true
+}

@@ -1,0 +1,19 @@
+<h2>
+  Users
+  <button mat-raised-button color="primary" (click)="addUserModal()">
+    <mat-icon>person_add_alt</mat-icon> Add new user
+  </button>
+</h2>
+<hr>
+<ul class="users-cards-list">
+  <li *ngFor="let user of users">
+    <app-user-card [user]="user" (onEdit)="getAction({action:$event, user:user})"></app-user-card>
+  </li>
+</ul>
+
+
+<ng-template #deleteConfirmation>
+  <h2>Are you sure you want to delete this user?</h2>
+  <button mat-raised-button color="warn" (click)="removeUser()">Delete</button>
+  <button mat-button (click)="dialog.closeAll()">Cancel</button>
+</ng-template>

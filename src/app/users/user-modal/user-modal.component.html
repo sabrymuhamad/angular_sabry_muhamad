@@ -1,0 +1,57 @@
+<form (ngSubmit)="save(userForm)" #userForm="ngForm">
+  <h1 mat-dialog-title>{{title}}</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" placeholder="Username" name="username" minlength="4"
+        (keyup)="userService.formValidation(userForm,'username')" [(ngModel)]="user.username" required>
+      <mat-error>{{userService.formValidation(userForm,'username')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" type="password"
+        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+        (keyup)="userService.formValidation(userForm,'password')" name="password" [(ngModel)]="user.password" required>
+      <mat-error>{{userService.formValidation(userForm,'password')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>First name</mat-label>
+      <input matInput type="text" placeholder="First name" pattern="^[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)*.{4,}$"
+        (keyup)="userService.formValidation(userForm,'firstname')" name="firstname" [(ngModel)]="user.fName" required>
+      <mat-error>{{userService.formValidation(userForm,'firstname')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>Last name</mat-label>
+      <input matInput type="text" placeholder="Last name" pattern="^[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)*.{4,}$"
+        (keyup)="userService.formValidation(userForm,'lastname')" name="lastname" [(ngModel)]="user.lName" required>
+      <mat-error>{{userService.formValidation(userForm,'lastname')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        (keyup)="userService.formValidation(userForm,'email')" name="email" [(ngModel)]="user.email" required>
+      <mat-error>{{userService.formValidation(userForm,'email')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="text" (keyup)="userService.formValidation(userForm,'phonenumber')"
+        placeholder="Phone Number" name="phonenumber" [(ngModel)]="user.phoneNum" required>
+      <mat-hint class="error">{{userService.formValidation(userForm,'phonenumber')}}</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="standard">
+      <mat-label>Department</mat-label>
+      <mat-select name="department" [(ngModel)]="user.department" required>
+        <mat-option *ngFor="let dept of depts" [value]="dept.name">
+          {{dept.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions class="justify-content-end">
+    <button mat-button type="button" (click)="dismiss()">Cancel</button>
+    <button mat-raised-button type="submit" color="primary">
+      <mat-spinner *ngIf="loading" class="d-inline-block" [color]="'accent'" [diameter]="15"></mat-spinner> Save
+    </button>
+  </div>
+</form>
